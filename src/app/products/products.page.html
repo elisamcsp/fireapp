@@ -15,12 +15,13 @@
 <ion-content *ngIf="items" class="list-mini-content" padding>
     <div *ngIf="items.length > 0" class="list-mini">
         <ion-list>
-            <ion-item *ngFor="let item of items" [routerLink]="['/details', item.payload.doc.id]">
+            <ion-item *ngFor="let item of items">
                 <ion-thumbnail slot="start">
                     <img alt="" [src]="item.payload.doc.data().image">
                 </ion-thumbnail>
                 <ion-label>{{item.payload.doc.data().name}}</ion-label>
-                <ion-button fill="clear" slot="end">Ver detalle</ion-button>
+                <ion-button fill="clear" slot="end" [routerLink]="['/details', item.payload.doc.id]">Ver detalle</ion-button>
+                <ion-button fill="clear" slot="end" (click)="deleteProduct(item.payload.doc.id)">Eliminar</ion-button>
             </ion-item>
         </ion-list>
     </div>

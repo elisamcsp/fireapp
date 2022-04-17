@@ -49,6 +49,10 @@ export class LoginPage implements OnInit {
       this.router.navigate(["/products"]);
     }, err => {
       this.errorMessage = err.message;
+      if(err.message.includes('(auth/user-not-found)'))
+        this.errorMessage = "El email que escribió es incorrecto. Inténtelo nuevamente.";
+      if(err.message.includes('(auth/wrong-password)'))    
+        this.errorMessage = "La contraseña que ha proporcionado no es correcta. Inténtelo de nuevo.";
       console.log(err);
     })
   }

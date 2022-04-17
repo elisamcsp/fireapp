@@ -1,7 +1,9 @@
 <ion-header>
     <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button></ion-back-button>
+        </ion-buttons>
         <ion-title>Login</ion-title>
-        <ion-back-button></ion-back-button>
     </ion-toolbar>
 </ion-header>
 
@@ -37,7 +39,7 @@
             <ion-button type="submit" [disabled]="!formValidation.valid">Iniciar sesión</ion-button>
         </div>
         <div class="div-label-error">
-            <ion-label class="error-message">{{ errorMessage }}</ion-label>
+            <ion-label class="login-error-message">{{ errorMessage }}</ion-label>
         </div>
     </form>
 

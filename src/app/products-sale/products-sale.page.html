@@ -1,0 +1,25 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-back-button slot="start"></ion-back-button>
+        <ion-title>Lista de Productos en venta</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="items" class="list-mini-content" padding>
+    <div *ngIf="items.length > 0" class="list-mini">
+        <ion-list>
+            <ion-item *ngFor="let item of items" [routerLink]="['/details', item.payload.doc.id]">
+                <ion-thumbnail slot="start">
+                    <img alt="" [src]="item.payload.doc.data().image != '' ? item.payload.doc.data().image : noImage ">
+                </ion-thumbnail>
+                <ion-label>
+                    <h2>{{item.payload.doc.data().name}}</h2>
+                    <h3>Description: {{item.payload.doc.data().description}}</h3>
+                </ion-label>
+            </ion-item>
+        </ion-list>
+    </div>
+    <div class="empty-list" *ngIf="items.length == 0">
+        No tiene ningún producto creado.
+    </div>
+</ion-content>

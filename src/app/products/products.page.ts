@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service'; //
 import { LoadingController } from '@ionic/angular';
 import { Router, ActivatedRoute } from '@angular/router';
+import { DbService } from '../services/db.service';
 
 @Component({
   selector: 'app-products',
@@ -11,12 +12,14 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class ProductsPage implements OnInit {
 
   items: Array<any>;
+  errorMessage: string;
 
   constructor(
     public loadingCtrl: LoadingController, 
     private authService: AuthService, 
     private router: Router, 
-    private route: ActivatedRoute 
+    private route: ActivatedRoute,
+    private dbService: DbService 
   ) { }
 
   ngOnInit() {
@@ -38,6 +41,18 @@ export class ProductsPage implements OnInit {
       })
     })
   }
+
+  async deleteProduct(productKey){     
+    await this.dbService.deleteProduct(productKey)
+    .then(
+      res => {
+        console.log("Product deleted");
+      }, err => {
+        this.errorMessage = "No se pudo eliminar el producto.";
+        console.log(err);
+      }
+    )
+  } 
 
   async presentLoading(loading) {
     return await loading.present();
