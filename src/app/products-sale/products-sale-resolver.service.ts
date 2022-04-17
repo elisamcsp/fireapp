@@ -14,12 +14,10 @@ export class ProductsSaleResolverService {
     public afAuth: AngularFireAuth) { }
 
   getProducts(){ 
-    return new Promise<any>((resolve, reject) => {      
+    return new Promise<any>((resolve, reject) => {    
       this.afAuth.user.subscribe(currentUser => {
-        if(currentUser){
-          this.snapshotChangesSubscription = this.afs.collection('users').doc("hyYQUoqo6dSx3mdKe2XfZ8SCZdS2").collection('products').snapshotChanges();
+        this.snapshotChangesSubscription = this.afs.collection('users').doc("tpPjFtF33VU3IWLZmfBf5vjX5Pt1").collection('products').snapshotChanges();
           resolve(this.snapshotChangesSubscription);
-        }
       })
     })
   }

@@ -20,7 +20,7 @@
                     <img alt="" [src]="item.payload.doc.data().image">
                 </ion-thumbnail>
                 <ion-label>{{item.payload.doc.data().name}}</ion-label>
-                <ion-button fill="clear" slot="end" [routerLink]="['/details', item.payload.doc.id]">Ver detalle</ion-button>
+                <ion-button fill="clear" slot="end" [routerLink]="['/product-detail', item.payload.doc.id]">Ver detalle</ion-button>
                 <ion-button fill="clear" slot="end" (click)="deleteProduct(item.payload.doc.id)">Eliminar</ion-button>
             </ion-item>
         </ion-list>

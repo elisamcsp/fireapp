@@ -22,12 +22,13 @@ const routes: Routes = [
   {
     path: 'add-product',
     loadChildren: () => import('./add-product/add-product.module').then( m => m.AddProductPageModule)
-  },  {
+  },
+  {
     path: 'products-sale',
     loadChildren: () => import('./products-sale/products-sale.module').then( m => m.ProductsSalePageModule)
   },
   {
-    path: 'product-detail',
+    path: 'product-detail/:key',
     loadChildren: () => import('./product-detail/product-detail.module').then( m => m.ProductDetailPageModule)
   },
 
