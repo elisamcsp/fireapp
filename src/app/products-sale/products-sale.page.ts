@@ -16,7 +16,6 @@ export class ProductsSalePage implements OnInit {
   constructor(
     public loadingCtrl: LoadingController, 
     private productSaleService: ProductsSaleResolverService, 
-    private router: Router, 
     private route: ActivatedRoute 
   ) { }
 
